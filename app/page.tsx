@@ -31,14 +31,16 @@ export default async function HomePage() {
 
   return (
     <main style={{ background: '#0a0a0a', color: '#f0ece4', minHeight: '100vh', fontFamily: 'monospace' }}>
+      
+{ /* ANCHOR - Hero */ }
 
-      {/* hero */}
-      <section style={{ position: 'relative', width: '100%', height: '100vh' }}>
+      <section style={{ position: 'relative', width: '100%', height: '50vh' }}>
         <Image
           src="/Minot_band_photo.jpg"
           alt="Minot band photo"
           fill
-          style={{ objectFit: 'cover', objectPosition: 'top', filter: 'grayscale(30%) contrast(1.1) brightness(0.55)' }}
+          style={{ objectFit: 'cover', objectPosition: 'top', 
+          filter: 'grayscale(30%) contrast(1.1) brightness(0.55)' }}
           priority
         />
         <div style={{
@@ -47,16 +49,44 @@ export default async function HomePage() {
           alignItems: 'center', justifyContent: 'center',
           textAlign: 'center', padding: '0 1rem'
         }}>
-          <h1 style={{ fontSize: 'clamp(3rem, 10vw, 7rem)', fontWeight: 900, letterSpacing: '-0.02em', margin: 0, textTransform: 'uppercase' }}>
+          <h1 style={{ fontSize: 'clamp(3rem, 10vw, 7rem)', fontWeight: 900, letterSpacing: '-0.02em', 
+            margin: 0, textTransform: 'uppercase' }}>
             MINOT
           </h1>
-          <p style={{ fontSize: 'clamp(0.85rem, 2vw, 1.1rem)', letterSpacing: '0.2em', marginTop: '0.75rem', opacity: 0.7, textTransform: 'uppercase' }}>
+          <p style={{ fontSize: 'clamp(0.85rem, 2vw, 1.1rem)', letterSpacing: '0.2em', 
+            marginTop: '0.75rem', opacity: 0.7, textTransform: 'uppercase' }}>
             budget rock...on a budget
           </p>
         </div>
+
+        <div className='desktop-nav-bar' style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0,
+          background: 'rgba(10, 10, 10, 0.7)',
+          backdropFilter: 'blur(4px)',
+          display: 'flex', justifyContent: 'center',
+          gap: '3rem', padding: '1rem 2rem',
+        }}>
+          {[
+            { label: 'Shows', href: '/gigs' },
+            { label: 'Music', href: '/music' },
+            { label: 'Merch', href: '/merch' },
+            { label: 'About', href: '/about' },
+          ].map(({ label, href }) => (
+            <a key={label} href={href}
+              style={{
+                color: '#f0ece4', textDecoration: 'none',
+                fontFamily: 'monospace', fontSize: '0.85rem',
+                letterSpacing: '0.2em', textTransform: 'uppercase',
+                opacity: 0.85,
+              }}>
+              {label}
+            </a>
+          ))}
+        </div>  
       </section>
 
-      {/* latest release */}
+{ /* ANCHOR - Music */ }
+
       {music && music.length > 0 && (
         <section style={{ padding: '4rem 2rem', borderBottom: '1px solid #222' }}>
           <h2 style={{ fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', opacity: 0.5, marginBottom: '1rem' }}>
@@ -81,7 +111,8 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* upcoming shows */}
+{ /* ANCHOR - Gigs */ }
+
       <section style={{ padding: '4rem 2rem', borderBottom: '1px solid #222' }}>
         <h2 style={{ fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', opacity: 0.5, marginBottom: '2rem' }}>
           Upcoming Shows
@@ -110,7 +141,8 @@ export default async function HomePage() {
         </Link>
       </section>
 
-      {/* socials */}
+{ /* ANCHOR - Links */ }
+
       <section style={{ padding: '4rem 2rem' }}>
         <h2 style={{ fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', opacity: 0.5, marginBottom: '2rem' }}>
           Find Us
