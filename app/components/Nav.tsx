@@ -15,19 +15,18 @@ export default function Nav() {
 
     return (
        <> 
-        <nav style={{
+        <nav className='md:hidden' style={{
             position: 'fixed',
             top: 0,
             left: 0,
             right: 0,
             zIndex: 100,
             padding: '1.25rem 2rem',
-            display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
         }}>
 
-{ /* ANCHOR - Logo */ }
+{ /* ANCHOR - Mobile Home Logo */ }
 
             <Link href='/' onClick={() => setOpen(false)}
                 style={{ color: '#f0ece4', textDecoration: 'none', fontFamily: 'monospace',
@@ -43,7 +42,6 @@ export default function Nav() {
                     display: 'flex', flexDirection: 'column', gap: '5px',
                 }}
                     aria-label='Toggle menu'
-                    className='hamburger'
             >
                 <span style={{
                     display: 'block', width: '24px', height: '1.5px', background: '#f0ece4',

@@ -12,16 +12,12 @@ body {
   font-family: monospace;
 }
 
-.hamburger {
-  display: none;
-}
-
 .mobile-menu {
   display: none;
 }
 
 @media (max-width: 768px) {
-  .hamburger {
+  .mobile-only-nav {
     display: flex;
   }
 

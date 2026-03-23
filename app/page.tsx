@@ -137,7 +137,7 @@ export default async function HomePage() {
           <p style={{ opacity: 0.4 }}>No upcoming shows. Check back soon.</p>
         )}
         <Link href="/gigs" style={{ display: 'inline-block', marginTop: '2rem', color: '#f0ece4', opacity: 0.5, fontSize: '0.8rem', letterSpacing: '0.15em', textDecoration: 'none', textTransform: 'uppercase' }}>
-          All Shows →
+          All Shows
         </Link>
       </section>
 
@@ -157,7 +157,7 @@ export default async function HomePage() {
           ].map(({ label, url }) => (
             <a key={label} href={url} target="_blank" rel="noopener noreferrer"
               style={{ color: '#f0ece4', borderBottom: '1px solid #444', paddingBottom: '2px', textDecoration: 'none', fontSize: '0.9rem', letterSpacing: '0.1em' }}>
-              {label} ↗
+              {label}
             </a>
           ))}
         </div>
