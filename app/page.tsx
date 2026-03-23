@@ -34,12 +34,12 @@ export default async function HomePage() {
       
 { /* ANCHOR - Hero */ }
 
-      <section style={{ position: 'relative', width: '100%', height: '50vh' }}>
+      <section style={{ position: 'relative', width: '100%', height: '80vh' }}>
         <Image
           src="/Minot_band_photo.jpg"
           alt="Minot band photo"
           fill
-          style={{ objectFit: 'cover', objectPosition: 'top', 
+          style={{ objectFit: 'cover', objectPosition: '50% 17%', 
           filter: 'grayscale(30%) contrast(1.1) brightness(0.55)' }}
           priority
         />
