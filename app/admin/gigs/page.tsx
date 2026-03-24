@@ -29,6 +29,7 @@ export default function AdminGigsPage() {
     const [ticketUrl, setTicketUrl] = useState('')
     const [notes, setNotes] = useState('')
     const [flyerFile, setFlyerFile] = useState<File | null>(null)
+    const [editingId, setEditingId] = useState<string | null>(null)
 
     const router = useRouter()
 
@@ -91,7 +92,34 @@ export default function AdminGigsPage() {
             flyerUrl = data.publicUrl
         }
 
-        const { error } = await supabase
+        if (editingId) {
+            const { error } = await supabase
+            .from('gigs')
+            .update({
+                date,
+                venue,
+                city,
+                state: state || null,
+                ticket_url: ticketUrl || null,
+                notes: notes || null,
+                ...((flyerUrl && { flyer_url: flyerUrl })),
+            })
+            .eq('id', editingId)
+        if (error) {
+            setError('Error updating show.')
+        } else {
+            setEditingId(null)
+            setDate('')
+            setVenue('')
+            setCity('')
+            setState('')
+            setTicketUrl('')
+            setNotes('')
+            setFlyerFile(null)
+            fetchGigs()
+        }
+        } else {
+            const { error } = await supabase
             .from('gigs')
             .insert([{
                 date,
@@ -102,7 +130,7 @@ export default function AdminGigsPage() {
                 notes: notes || null,
                 flyer_url: flyerUrl,
             }])
-
+        
         if (error) {
             setError('Error adding gig.')
         } else {
@@ -115,7 +143,8 @@ export default function AdminGigsPage() {
             setFlyerFile(null)
             fetchGigs()
         }
-        setSaving(false)
+    }
+    setSaving(false)
     }
 
     async function handleDeleteGig(id: string) {
@@ -131,6 +160,29 @@ export default function AdminGigsPage() {
         } else {
             fetchGigs()
         }
+    }
+
+    function handleEditGig(gig: Gig) {
+        setEditingId(gig.id)
+        setDate(gig.date)
+        setVenue(gig.venue)
+        setCity(gig.city)
+        setState(gig.state || '')
+        setTicketUrl(gig.ticket_url || '')
+        setNotes(gig.notes || '')
+        setFlyerFile(null)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    function handleCancelEdit() {
+        setEditingId(null)
+        setDate('')
+        setVenue('')
+        setCity('')
+        setState('')
+        setTicketUrl('')
+        setNotes('')
+        setFlyerFile(null)
     }
 
     const inputStyle = {
@@ -221,7 +273,7 @@ export default function AdminGigsPage() {
                         opacity: 0.5, 
                         marginBottom: '0.5rem' 
                     }}>
-                        Add Show
+                        {editingId ? 'Edit Show' : 'Add Show'}
                     </h2>
 
                     <div style={{ 
@@ -275,7 +327,11 @@ export default function AdminGigsPage() {
                         color: '#ff4444', 
                         fontSize: '0.85rem' 
                     }}>{error}</p>}
-
+                <div style={{
+                    display: 'flex',
+                    gap: '1rem',
+                    alignItems: 'center'
+                }}>
                     <button type='submit' disabled={saving} style={{
                         background: '#f0ece4', 
                         color: '#0a0a0a', 
@@ -289,9 +345,27 @@ export default function AdminGigsPage() {
                         opacity: saving ? 0.5 : 1, 
                         alignSelf: 'flex-start',
                     }}>
-                        {saving ? 'Saving...' : 'Add Show'}
+                        {saving ? 'Saving...' : editingId ? 'Update Show' :'Add Show'}
                     </button>
-                </form>
+
+                    {editingId && (
+                        <button type='button' onClick={handleCancelEdit}
+                            style={{
+                                background: 'none',
+                                border: '1px solid #333',
+                                color: '#f0ece4',
+                                padding: '0.75rem 1rem',
+                                fontFamily: 'monospace',
+                                fontSize: '0.9rem',
+                                letterSpacing: '0.1em',
+                                textTransform: 'uppercase',
+                                cursor: 'pointer',
+                            }}>
+                                Cancel
+                            </button>
+                        )}
+                </div>    
+            </form>
 
 {/* ANCHOR - Current Shows */}
 
@@ -353,6 +427,23 @@ export default function AdminGigsPage() {
                                         />
                                     )}
                                 </div>
+                            <div style={{
+                                display: 'flex',
+                                gap: '0.5rem'
+                            }}>
+                                <button onClick={() => handleEditGig(gig)} style={{
+                                    background: 'none', 
+                                    border: '1px solid #333', 
+                                    color: '#f0ece4',
+                                    padding: '0.25rem 0.75rem', 
+                                    fontFamily: 'monospace', 
+                                    fontSize: '0.8rem',
+                                    cursor: 'pointer', 
+                                    letterSpacing: '0.1em', 
+                                    textTransform: 'uppercase', 
+                                }}>
+                                    Edit
+                                </button>
                                 <button onClick={() => handleDeleteGig(gig.id)} style={{
                                     background: 'none', 
                                     border: '1px solid #333', 
@@ -366,6 +457,7 @@ export default function AdminGigsPage() {
                                 }}>
                                     Delete
                                 </button>
+                            </div>
                             </li>
                         ))}
                     </ul>
