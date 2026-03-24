@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
+import FlyerLightbox from './components/FlyerLightbox'
 
 export default async function HomePage() {
   const cookieStore = await cookies()
@@ -209,11 +210,14 @@ export default async function HomePage() {
               style={{ 
                 display: 'flex', 
                 gap: '2rem', 
-                alignItems: 'baseline', 
+                alignItems: 'center', 
                 flexWrap: 'wrap', 
                 borderBottom: '1px solid #1a1a1a', 
                 paddingBottom: '1.5rem' 
               }}>
+                {gig.flyer_url && (
+                  <FlyerLightbox url={gig.flyer_url} venue={gig.venue} />
+                )}
                 <span style={{ 
                   fontFamily: 'monospace', 
                   opacity: 0.5, 
