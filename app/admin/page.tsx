@@ -51,7 +51,10 @@ export default function AdminPage() {
             fontFamily: 'monospace', 
             padding: '4rem 2rem' 
         }}>
-            <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <div style={{ 
+                maxWidth: '800px', 
+                margin: '0 auto' 
+            }}>
                 <div style={{ 
                     display: 'flex', 
                     justifyContent: 'space-between', 
