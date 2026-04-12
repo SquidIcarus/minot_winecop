@@ -16,11 +16,11 @@ export default function Nav() {
     ]
 
     const socials = [
-        { icon: <FaBandcamp size={18}/>, href: 'https://minot.bandcamp.com/', label: 'Bandcamp' },
-        { icon: <FaInstagram size={18}/>, href: 'https://www.instagram.com/minotmusic/', label: 'Instagram' },
-        { icon: <FaFacebook size={18}/>, href: 'https://www.facebook.com/minotmusic', label: 'Facebook' },
-        { icon: <FaYoutube size={18}/>, href: 'https://www.youtube.com/@minotmusic', label: 'YouTube' },
-        { icon: <SiLinktree size={18}/>, href: 'https://linktr.ee/minotmusic', label: 'LinkTree' },
+        { icon: <FaBandcamp size={18}/>, href: 'https://minot1.bandcamp.com/', label: 'Bandcamp' },
+        { icon: <FaInstagram size={18}/>, href: 'https://www.instagram.com/minot_winecop/', label: 'Instagram' },
+        { icon: <FaFacebook size={18}/>, href: 'https://www.facebook.com/minot.whyknot', label: 'Facebook' },
+        { icon: <FaYoutube size={18}/>, href: 'https://www.youtube.com/@MINOT_MT', label: 'YouTube' },
+        { icon: <SiLinktree size={18}/>, href: 'https://linktr.ee/minot_whyknot', label: 'LinkTree' },
     ]
 
     return (
