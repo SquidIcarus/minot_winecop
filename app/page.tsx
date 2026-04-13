@@ -37,7 +37,7 @@ export default async function HomePage() {
       fontFamily: 'monospace',
     }}>
 
-{/* ANCHOR - Album Showcase */}
+{/* ANCHOR - Hero */}
 
       <section style={{
         display: 'flex',
@@ -56,8 +56,8 @@ export default async function HomePage() {
         }}>
 {/* Large circle - live photo */}
           <div style={{
-            width: 'clamp(280px, 60vw, 620px)',
-            height: 'clamp(280px, 60vw, 620px)',
+            width: 'clamp(280px, 80vw, 900px)',
+            height: 'clamp(280px, 80vw, 900px)',
             borderRadius: '50%',
             overflow: 'hidden',
             position: 'relative',
@@ -74,8 +74,8 @@ export default async function HomePage() {
 
 {/* Small circle - album cover overlapping bottom */}
           <div style={{
-            width: 'clamp(120px, 22vw, 220px)',
-            height: 'clamp(120px, 22vw, 220px)',
+            width: 'clamp(175px, 30vw, 360px)',
+            height: 'clamp(175px, 30vw, 360px)',
             borderRadius: '50%',
             overflow: 'hidden',
             position: 'absolute',
@@ -84,10 +84,10 @@ export default async function HomePage() {
             zIndex: 10,
           }}>
             <Image
-              src="/album-cover.png"
-              alt="And You're Not - album cover"
+              src="/single-cover.png"
+              alt="image for bottle of tumz single"
               fill
-              style={{ objectFit: 'cover' }}
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
             />
           </div>
         </div>
@@ -101,7 +101,7 @@ export default async function HomePage() {
             opacity: 0.5,
             marginBottom: '0.5rem',
           }}>
-            New Album
+            New Album Coming Soon
           </p>
           <h1 style={{
             fontSize: 'clamp(1.8rem, 5vw, 3.5rem)',
@@ -112,7 +112,7 @@ export default async function HomePage() {
           }}>
             And You're Not
           </h1>
-          <a href='https://minot1.bandcamp.com/album/and-youre-not'
+          <a href='https://minot1.bandcamp.com/track/bottle-of-tumz'
             target='_blank'
             rel='noopener noreferrer'
             style={{
