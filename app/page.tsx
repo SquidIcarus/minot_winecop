@@ -53,8 +53,11 @@ export default async function HomePage() {
           flexDirection: 'column',
           alignItems: 'center',
           marginBottom: '2rem',
+          width: '100%',
+          maxWidth: '900px',
         }}>
 {/* Large circle - live photo */}
+
           <div style={{
             width: 'clamp(280px, 80vw, 900px)',
             height: 'clamp(280px, 80vw, 900px)',
@@ -67,70 +70,125 @@ export default async function HomePage() {
               src='/live-photo.jpg'
               alt='Minot live with psychedelic light swirl'
               fill
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              style={{ 
+                objectFit: 'cover', 
+                objectPosition: 'center' 
+              }}
               priority
             />
           </div>
 
-{/* Small circle - album cover overlapping bottom */}
+{/* Three release circles */}
           <div style={{
-            width: 'clamp(175px, 30vw, 360px)',
-            height: 'clamp(175px, 30vw, 360px)',
-            borderRadius: '50%',
-            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            gap: '2rem',
             position: 'absolute',
-            bottom: '-60px',
-            border: '4px solid #1a1410',
+            bottom: '-120px',
+            width: '100%',
             zIndex: 10,
           }}>
-            <Image
-              src="/single-cover.png"
-              alt="image for bottle of tumz single"
-              fill
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
-            />
-          </div>
-        </div>
+            {[
+              {
+                title: 'Walls / People Pleaser',
+                type: '7" Single',
+                image: '/walls-people-pleaser.jpg',
+                href: 'https://minot1.bandcamp.com/album/walls-people-pleaser',
+                label: 'Buy / Stream',
+              },
+              {
+                title: "And You're Not",
+                type: 'Album',
+                image: '/album-cover.jpg',
+                href: 'https://minot1.bandcamp.com/album/and-youre-not',
+                label: 'Buy / Stream',
+                isNew: true,
+              },
+              {
+                title: 'Scarecrow',
+                type: 'Single',
+                image: '/scarecrow.jpg',
+                href: 'https://minot1.bandcamp.com/track/scarecrow',
+                label: 'Buy / Stream',
+              },
+            ].map((release) => (
+              <div key={release.title} style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '0.75rem',
+              }}>
 
-{/* Album title and link */}
-        <div style={{ marginTop: '4rem' }}>
-          <p style={{
-            fontSize: '0.7rem',
-            letterSpacing: '0.3em',
-            textTransform: 'uppercase',
-            opacity: 0.5,
-            marginBottom: '0.5rem',
-          }}>
-            New Album Coming Soon
-          </p>
-          <h1 style={{
-            fontSize: 'clamp(1.8rem, 5vw, 3.5rem)',
-            fontWeight: 900,
-            letterSpacing: '-0.02em',
-            margin: '0 0 1.5rem',
-            fontFamily: 'monospace',
-          }}>
-            And You're Not
-          </h1>
-          <a href='https://minot1.bandcamp.com/track/bottle-of-tumz'
-            target='_blank'
-            rel='noopener noreferrer'
-            style={{
-              display: 'inline-block',
-              background: '#e8355a',
-              color: '#f0e6d3',
-              padding: '0.75rem 2rem',
-              textDecoration: 'none',
-              fontFamily: 'monospace',
-              fontSize: '0.85rem',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              fontWeight: 700,
-            }}>
-            Buy / Stream
-          </a>
+{/* Circle image */}
+              <div style={{
+                width: 'clamp(175px, 30vw, 360px)',
+                height: 'clamp(175px, 30vw, 360px)',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                position: 'relative',
+                border: '2px solid #1a1410',
+                flexShrink: 0,
+              }}>
+                <Image
+                  src={release.image}
+                  alt={release.title}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+    {/* Title and card buttons */}
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '0.4rem',
+                textAlign: 'center',
+              }}>
+                <p style={{
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  opacity: 0.4,
+              }}>
+                {release.type}
+              </p>
+              <p style={{
+                fontWeight: 700,
+                fontSize: 'clamp(0.7rem, 1.5vw, 0.9rem)',
+                lineHeight: 1.3,
+              }}>
+                {release.title}
+              </p>
+              
+              <a href={release.href}
+              target='_blank'
+              rel='noopener noreferrer'
+              style={{
+                display: 'inline-block',
+                marginTop: '0.25rem',
+                background: '#e8355a',
+                color: '#f0e6d3',
+                padding: '0.35rem 0.85rem',
+                textDecoration: 'none',
+                fontFamily: 'monospace',
+                fontSize: '0.7rem',
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                fontWeight: 700,
+              }}>
+              {release.label}
+            </a>
+          </div>
+
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+
+  <div style={{ height: '160px' }} />
+
+</section>
 
 {/* ANCHOR - Merch Grid */}
 
