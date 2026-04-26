@@ -401,7 +401,7 @@ export default async function HomePage() {
                       fontSize: '0.8rem',
                       letterSpacing: '0.1em',
                     }}>
-                    Tickets ↗
+                    Tickets
                   </a>
                 )}
               </li>
@@ -437,13 +437,11 @@ export default async function HomePage() {
           fontSize: '0.7rem',
           letterSpacing: '0.3em',
           textTransform: 'uppercase',
-          opacity: 0.5,
           marginBottom: '0.75rem',
         }}>
           Stay In The Loop
         </h2>
         <p style={{
-          opacity: 0.4,
           fontSize: '0.85rem',
           marginBottom: '1.5rem',
         }}>
