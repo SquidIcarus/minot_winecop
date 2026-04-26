@@ -85,7 +85,7 @@ export default async function HomePage() {
             justifyContent: 'center',
             gap: '2rem',
             position: 'absolute',
-            bottom: '-120px',
+            bottom: '-180px',
             width: '100%',
             zIndex: 10,
           }}>
@@ -100,7 +100,7 @@ export default async function HomePage() {
               {
                 title: "And You're Not",
                 type: 'Album',
-                image: '/album-cover.jpg',
+                image: '/AndYoureNot.png',
                 href: 'https://minot1.bandcamp.com/album/and-youre-not',
                 label: 'Buy / Stream',
                 isNew: true,
@@ -122,8 +122,8 @@ export default async function HomePage() {
 
 {/* Circle image */}
               <div style={{
-                width: 'clamp(175px, 30vw, 360px)',
-                height: 'clamp(175px, 30vw, 360px)',
+                width: 'clamp(150px, 25vw, 300px)',
+                height: 'clamp(150px, 25vw, 300px)',
                 borderRadius: '50%',
                 overflow: 'hidden',
                 position: 'relative',
@@ -186,7 +186,7 @@ export default async function HomePage() {
     </div>
   </div>
 
-  <div style={{ height: '160px' }} />
+  <div style={{ height: '220px' }} />
 
 </section>
 
