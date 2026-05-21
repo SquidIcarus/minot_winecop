@@ -45,9 +45,8 @@ export default function AboutPage() {
                     fontSize: 'clamp(1rem, 3vw, 1.5rem)',
                     letterSpacing: '0.1em',
                     opacity: 0.7,
-                    fontStyle: 'italic',
                 }}>
-                    Budget Rock.... On a budget.
+                    Budget Rock... On a budget.
                 </p>
             </div>
         </main>
