@@ -218,7 +218,7 @@ export default async function HomePage() {
             {merch.map((item) => (
               
                <a key={item.id}
-                href='https://minot1.bandcamp.com/merch'
+                href={item.bandcamp_url || 'https://minot1.bandcamp.com/merch'}
                 target='_blank'
                 rel='noopener noreferrer'
                 style={{
