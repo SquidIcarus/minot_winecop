@@ -410,18 +410,6 @@ export default async function HomePage() {
         ) : (
           <p style={{ opacity: 0.4 }}>No upcoming shows. Check back soon.</p>
         )}
-        <Link href='/gigs' style={{
-          display: 'inline-block',
-          marginTop: '1rem',
-          color: '#f0e6d3',
-          opacity: 0.5,
-          fontSize: '0.8rem',
-          letterSpacing: '0.15em',
-          textDecoration: 'none',
-          textTransform: 'uppercase',
-        }}>
-          All Shows →
-        </Link>
       </section>
 
 {/* ANCHOR - Email Subscribe */}

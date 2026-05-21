@@ -1,40 +1,51 @@
-export default function AboutPage() {
-    const members = [
-        {
-            name: 'Minot 1',
-            role: 'Guitar / Vox',
-            bio: 'Bio goes here.'
-        },
-        {
-            name: 'Minot 2',
-            role: 'Guitar / Vox',
-            bio: 'Bio goes here.'
-        },
-        {
-            name: 'Minot 3',
-            role: 'Floor Tom',
-            bio: 'Bio goes here.'
-        }
-    ]
+import Image from 'next/image'
 
+export default function AboutPage() {
     return (
-        <main>
-            <h1>About</h1>
-            <section>
-                <p>Let me introduce the adolescent neanderthals themselves, Minot.  These overgrown teenage garage-punk muffins bring their take on the raw, the cheap and the lo-fidelity. The three-piece from Missoula, MT embodies the primitive, sloppy roots of everything that is, budget rock. A poorly contained train wreck influenced by punk, 60's garage-pop and country blues.</p>
-            </section>
-            <section>
-                <h2>Mutants</h2>
-                <ul>
-                    {members.map((member) => (
-                        <li key={member.name}>
-                            <h3>{member.name}</h3>
-                            <p>{member.role}</p>
-                            <p>{member.bio}</p>
-                        </li>
-                    ))}
-                </ul>
-            </section>
+        <main style={{
+            background: '#1a1410',
+            color: '#f0e6d3',
+            minHeight: '100vh',
+            fontFamily: 'monospace',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '8rem 2rem 4rem',
+            textAlign: 'center',
+        }}>
+            <div style={{
+                maxWidth: '600px',
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '2rem',
+            }}>
+                <div style={{
+                    width: '100%',
+                    aspectRatio: '1',
+                    position: 'relative',
+                    overflow: 'hidden',
+                }}>
+                    <Image
+                        src='/Minot_band_photo.jpg'
+                        alt='Minot band photo, looking unwell in a stairwell'
+                        fill
+                        style={{ 
+                            objectFit: 'cover',
+                            objectPosition: '50% 20%' }}
+                            priority
+                    />
+                </div>
+                <p style={{ 
+                    fontSize: 'clamp(1rem, 3vw, 1.5rem)', 
+                    letterSpacing: '0.1em', 
+                    opacity: 0.7,
+                }}>
+                    Budget Rock... On a budget.
+                </p>
+            </div>
         </main>
     )
 }
