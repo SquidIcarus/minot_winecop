@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import FlyerLightbox from './components/FlyerLightbox'
+import SubscribeForm from './components/SubscribeForm'
 
 export default async function HomePage() {
   const cookieStore = await cookies()
@@ -414,7 +414,7 @@ export default async function HomePage() {
 
 {/* ANCHOR - Email Subscribe */}
 
-      <section style={{
+     <section style={{
         padding: '4rem 2rem',
         display: 'flex',
         flexDirection: 'column',
@@ -425,54 +425,20 @@ export default async function HomePage() {
           fontSize: '0.7rem',
           letterSpacing: '0.3em',
           textTransform: 'uppercase',
+          opacity: 0.5,
           marginBottom: '0.75rem',
         }}>
           Stay In The Loop
         </h2>
         <p style={{
+          opacity: 0.4,
           fontSize: '0.85rem',
           marginBottom: '1.5rem',
         }}>
           Get updates on shows, releases, and other budget rock news.
         </p>
-        <div style={{
-          display: 'flex',
-          gap: '0',
-          width: '100%',
-          maxWidth: '400px',
-        }}>
-          <input
-            type='email'
-            placeholder='your@email.com'
-            style={{
-              flex: 1,
-              background: '#2e2218',
-              border: '1px solid #3e3228',
-              borderRight: 'none',
-              color: '#f0e6d3',
-              padding: '0.75rem 1rem',
-              fontFamily: 'monospace',
-              fontSize: '0.9rem',
-              outline: 'none',
-            }}
-          />
-          <button style={{
-            background: '#e8355a',
-            color: '#f0e6d3',
-            border: 'none',
-            padding: '0.75rem 1.25rem',
-            fontFamily: 'monospace',
-            fontSize: '0.8rem',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            cursor: 'pointer',
-            fontWeight: 700,
-          }}>
-            Subscribe
-          </button>
-        </div>
-      </section>
-
+        <SubscribeForm />
+      </section>    
     </main>
   )
 }

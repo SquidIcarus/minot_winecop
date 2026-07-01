@@ -88,6 +88,7 @@ export default function AdminPage() {
                         { label: 'Manage Shows', href: '/admin/gigs', desc: 'Add, edit, or remove upcoming shows' },
                         { label: 'Manage Music', href: '/admin/music', desc: 'Add new releases and streaming links' },
                         { label: 'Manage Merch', href: '/admin/merch', desc: 'Add, edit, or mark items as sold out' },
+                        { label: 'Subscribers', href: '/admin/subscribers', desc: 'View email subscriber list' },
                     ].map(({ label, href, desc }) => (
                         <a key={label} href={href} style={{
                             display: 'block',
