@@ -29,6 +29,12 @@ export default async function HomePage() {
     .select('*')
     .order('created_at', { ascending: false })
 
+  const { data: tourFlyer } = await supabase
+    .from('featured_flyer')
+    .select('*')
+    .limit(1)
+    .single()
+
   return (
     <main style={{
       background: '#1a1410',
@@ -291,6 +297,46 @@ export default async function HomePage() {
           <p style={{ opacity: 0.4, textAlign: 'center' }}>No merch yet. Check back soon.</p>
         )}
       </section>
+
+{/* ANCHOR - Tour Flyer */}
+
+      {tourFlyer?.image_url && (
+        <section style={{
+          padding: '4rem 2rem',
+          borderBottom: '1px solid #2e2218',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
+          <h2 style={{
+            fontSize: '0.7rem',
+            letterSpacing: '0.3em',
+            textTransform: 'uppercase',
+            opacity: 0.5,
+            marginBottom: '2rem',
+            textAlign: 'center',
+          }}>
+            On Tour
+          </h2>
+          <div style={{
+            width: '100%',
+            maxWidth: '600px',
+            position: 'relative',
+          }}>
+            <Image
+              src={tourFlyer.image_url}
+              alt='Tour flyer'
+              width={600}
+              height={600}
+              style={{
+                width: '100%',
+                height: 'auto',
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+        </section>
+      )}
 
 {/* ANCHOR - Video */}
 
