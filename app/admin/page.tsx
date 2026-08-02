@@ -90,6 +90,7 @@ export default function AdminPage() {
                         { label: 'Manage Merch', href: '/admin/merch', desc: 'Add, edit, or mark items as sold out' },
                         { label: 'Subscribers', href: '/admin/subscribers', desc: 'View email subscriber list' },
                         { label: 'Tour Flyer', href: '/admin/tour-flyer', desc: 'Upload or update the featured tour flyer' },
+                        { label: 'Reviews', href: '/admin/reviews', desc: 'Add press reviews for releases' },
                     ].map(({ label, href, desc }) => (
                         <a key={label} href={href} style={{
                             display: 'block',
