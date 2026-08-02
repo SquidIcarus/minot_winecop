@@ -21,6 +21,13 @@ export default async function MusicPage() {
         .select('*')
         .order('release_date', { ascending: false })
 
+   const { data: reviews, error: reviewsError } = await supabase
+    .from('reviews')
+    .select('*')
+    .order('created_at', { ascending: false })
+
+if (reviewsError) console.error('Reviews error:', reviewsError)
+
     if (error) {
         console.error(error)
         return <div>Error loading music.</div>
@@ -76,6 +83,7 @@ export default async function MusicPage() {
                                                 flexDirection: 'column',
                                                 gap: '0.75rem',
                                             }}>
+                    {/* Cover Art */}
                                                 <div style={{
                                                     width: '100%',
                                                     aspectRatio: '1',
@@ -105,6 +113,7 @@ export default async function MusicPage() {
                                                         </div>
                                                     )}
                                                 </div>
+                            {/* Release Info */}
                                                 <div>
                                                     <p style={{
                                                         fontSize: '0.65rem',
@@ -122,6 +131,7 @@ export default async function MusicPage() {
                                                     }}>
                                                         {release.title}
                                                     </p>
+                                {/* Links */}
                                                     <div style={{
                                                         display: 'flex',
                                                         gap: '0.75rem',
@@ -166,6 +176,57 @@ export default async function MusicPage() {
                                                             </a>
                                                         )}
                                                     </div>
+                                {/* Reviews */}
+                                
+                                                    {reviews && reviews.filter((r) => Number(r.music_id) === Number(release.id)).length > 0 && (
+                                                        <div style={{
+                                                            marginTop: '1rem',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            gap: '0.75rem',
+                                                        }}>
+                                                            {reviews.filter((r) => Number(r.music_id) === Number(release.id)).map((review) => (
+                                                                <div key={review.id} style={{
+                                                                borderLeft: '2px solid #e8355a',
+                                                                paddingLeft: '0.75rem',
+                                                            }}>
+                                                                {review.url ? (
+                                                                    <a href={review.url} target='_blank' rel='noopener noreferrer'
+                                                                        style={{
+                                                                            fontSize: '0.8rem',
+                                                                            letterSpacing: '0.1em',
+                                                                            textTransform: 'uppercase',
+                                                                            color: '#f0e6d3',
+                                                                            textDecoration: 'none',
+                                                                            display: 'block',
+                                                                            marginBottom: '0.25rem',
+                                                                            fontWeight: 700,
+                                                                        }}>
+                                                                        {review.publication}
+                                                                    </a>
+                                                                ) : (
+                                                                    <p style={{
+                                                                        fontSize: '0.8rem',
+                                                                        letterSpacing: '0.1em',
+                                                                        textTransform: 'uppercase',
+                                                                        color: '#f0e6d3',
+                                                                        marginBottom: '0.25rem',
+                                                                        fontWeight: 700,
+                                                                    }}>
+                                                                        {review.publication}
+                                                                    </p>
+                                                                )}
+                                                                <p style={{
+                                                                    fontSize: '0.8rem',
+                                                                    fontStyle: 'italic',
+                                                                    opacity: 0.7,
+                                                                }}>
+                                                                    "{review.quote}"
+                                                                </p>
+                                                            </div>
+                                                            ))}
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
                                         ))}
